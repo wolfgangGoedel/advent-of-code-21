@@ -19,7 +19,7 @@ let windows =
 ;;
 
 let () =
-  let measures = Aoc.read () |> List.map int_of_string in
+  let measures = Aoc.read () |> Seq.map int_of_string |> List.of_seq in
   Printf.printf "part1: %d\n" (measures |> count_increments);
   Printf.printf "part2: %d\n" (measures |> windows |> count_increments)
 ;;
