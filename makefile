@@ -6,3 +6,6 @@ day1: aoc
 
 day2: aoc
 	@ocaml aoc.cmo day2.ml < day2.txt
+
+day3: aoc
+	@ocaml aoc.cmo day3.ml < day3.txt
