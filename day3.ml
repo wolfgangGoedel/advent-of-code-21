@@ -8,12 +8,6 @@ let parse bin =
   |> List.of_seq
 ;;
 
-let rec transpose = function
-  | [] -> []
-  | [] :: ys -> transpose ys
-  | ys -> List.map List.hd ys :: transpose (List.map List.tl ys)
-;;
-
 let ones n = (1 lsl n) - 1
 
 let collect =
@@ -23,7 +17,7 @@ let collect =
 
 let compute_part1 input =
   let length = List.length input in
-  let columns = transpose input in
+  let columns = Aoc.transpose input in
   let width = List.length columns in
   let dominants =
     let sum = List.fold_left ( + ) 0 in
@@ -43,7 +37,7 @@ let filter_with xs keep ys =
 ;;
 
 let reduce_input choose input =
-  let columns = transpose input in
+  let columns = Aoc.transpose input in
   let filter col = choose col |> Int.equal |> filter_with col in
   let rec aux = function
     | [], _ -> assert false
