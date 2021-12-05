@@ -12,3 +12,6 @@ day3: aoc
 
 day4: aoc
 	@ocaml aoc.cmo day4.ml < day4.txt
+
+day5: aoc
+	@ocaml str.cma aoc.cmo day5.ml < day5.txt
