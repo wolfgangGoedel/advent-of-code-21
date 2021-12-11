@@ -17,4 +17,7 @@ day5: aoc
 	@ocaml str.cma aoc.cmo day5.ml < day5.txt
 
 day6: aoc
-	@ocaml aoc.cmo day6.ml < day6.txt
+	@ocaml day6.ml < day6.txt
+
+day7: aoc
+	@ocaml day7.ml < day7.txt
