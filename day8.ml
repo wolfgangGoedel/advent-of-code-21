@@ -22,6 +22,8 @@ let digit_of_unique c =
   | _ -> None
 ;;
 
+module M = Map.Make (S)
+
 let classify cs =
   let one = List.find (fun c -> S.cardinal c = 2) cs in
   let four = List.find (fun c -> S.cardinal c = 4) cs in
@@ -39,12 +41,12 @@ let classify cs =
     | 7 -> 8
     | _ -> assert false
   in
-  cs |> List.map (fun c -> c, digit c)
+  cs |> List.fold_left (fun m c -> M.add c (digit c) m) M.empty
 ;;
 
 let decode (cs, out) =
   let cls = classify cs in
-  let digit c = List.find (fun (c', i) -> S.equal c c') cls |> snd in
+  let digit c = M.find c cls in
   let collect out c = (out * 10) + digit c in
   List.fold_left collect 0 out
 ;;
